@@ -3,6 +3,7 @@
 # Log Files Output Variables
 LOG_DIR="$HOME/logs"
 GRAFANA_DIR="$HOME/gcp_grafana"
+PROJECT_NAME=""
 
 if [ ! -d $LOG_DIR ]
 then
@@ -20,5 +21,9 @@ docker run -d --name gcp-stats-manager -v $GRAFANA_DIR:/etc/gcp-stats-analyzer g
 
 # Docker login to google cloud sdk environment execute cron command
 docker exec -it gcp-stats-manager "apt install -y nano crontab && gcloud auth login"
+echo -e '\n\n\n'
+docker exec -it gcp-stats-manager "gcloud projects list"
+echo -e '\n\n\n'
+docker exec -it gcp-stats-manager "gcloud config set project $PROJECT_NAME"
 docker exec -d gcp-stats-manager "bash /etc/gcp-stats-analyzer/run.sh" 
 docker restart gcp-stats-manager
