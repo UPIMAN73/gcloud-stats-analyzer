@@ -17,4 +17,4 @@ fi
 docker pull grafana/grafana
 
 # Docker 
-docker -d --name gcp-grafana -p 3010:3010 -v $GRAFANA_DIR:~/gcp_grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simpod-json-datasource,grafana-simple-json-datasource" grafana/grafana
+docker run -d --name gcp-grafana -p 3010:3010 -v $GRAFANA_DIR:/home/grafana/gcp_grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simpod-json-datasource,grafana-simple-json-datasource" grafana/grafana
