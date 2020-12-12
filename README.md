@@ -1,5 +1,5 @@
 # gcloud-stats-analyzer
-This is a basic google cloud project stats analyzer and graphical system
+This is a basic google cloud project stats analyzer for more concentrated metrics such as services, compute instances, bigqueries, buckets, etc. and forms it into a JSON format.
 
 To install and setup the environment:
 

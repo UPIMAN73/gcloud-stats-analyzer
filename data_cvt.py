@@ -8,7 +8,7 @@ pretty_print = False
 
 # Required Variables
 HOME_DIR = os.getenv('HOME')
-LOG_DIR = HOME_DIR + "/logs"
+LOG_DIR = HOME_DIR + "/gcp_grafana/logs"
 ovearll_file_name = LOG_DIR + "/overall_stats"
 output_file_name = HOME_DIR + "/gcp_grafana/data.json"
 overall_file_keys = []

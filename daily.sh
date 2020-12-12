@@ -22,8 +22,8 @@ gcloud services list --enabled > "$LOG_DIR/$ENABLED_SERVICES"
 gcloud services list --available > "$LOG_DIR/$AVAILABLE_SERVICES"
 
 # Compute Stats
-gcloud compute instances list &> "$LOG_DIR/$COMPUTE_ENGINE_LIST"
-gcloud compute disks list &> "$LOG_DIR/$COMPUTE_ENGINE_DISK_LIST"
+gcloud compute instances list > "$LOG_DIR/$COMPUTE_ENGINE_LIST"
+gcloud compute disks list > "$LOG_DIR/$COMPUTE_ENGINE_DISK_LIST"
 
 
 
@@ -34,8 +34,8 @@ gcloud compute disks list &> "$LOG_DIR/$COMPUTE_ENGINE_DISK_LIST"
 # Overall stats to be placed in an overall file
 NUM_ENABLED="$(wc -l $LOG_DIR/$ENABLED_SERVICES | cut -d ' ' -f1 -)"
 NUM_AVAILABLE="$(wc -l $LOG_DIR/$AVAILABLE_SERVICES  | cut -d ' ' -f1 -)"
-NUM_CINST="$(cut -d ' ' -f2 $LOG_DIR/$COMPUTE_ENGINE_LIST)"
-NUM_CDISK="$(cut -d ' ' -f2 $LOG_DIR/$COMPUTE_ENGINE_DISK_LIST)"
+NUM_CINST="$(($(wc -l $LOG_DIR/$COMPUTE_ENGINE_LIST  | cut -d ' ' -f1 -) - 1))"
+NUM_CDISK="$(wc -l $LOG_DIR/$COMPUTE_ENGINE_LIST  | cut -d ' ' -f1 -)"
 
 
 # Writeout to file
